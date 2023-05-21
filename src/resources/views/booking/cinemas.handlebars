@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <h1>Danh sách rạp</h1>
+    <hr>
+    {{#if cinemas.length }}
+    <div class="row">
+        {{#each cinemas}}
+        <div class="col-12">
+            <a href="/booking/choose-movie?id_cinema={{this._id}}"><h5>{{this.name}}</h5></a>
+            <span>{{this.address}}</span><br>
+            <span>{{this.phone}}</span>
+            <hr>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>Không tìm thấy rạp nào.</p>
+    {{/if}}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,94 @@
+<div class="mt-4">
+  <div class="">
+    <a href="/me/stored/movies">Danh sách phim của tôi</a>
+    <h1>Phim đã xóa</h1>
+  </div>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Thể loại</th>
+        <th scope="col" colspan="2">Thời gian xóa</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each movies}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.videoId}}</td>
+        <td>{{this.deletedAt}}</td>
+        <td>
+          <a href="" class="btn btn-outline-warning btn-restore" data-id="{{this._id}}">Khôi phục</a>
+          <a href="" class="btn btn-outline-danger" data-id="{{this._id}}" data-toggle="modal"
+            data-target="#delete-movie-modal">Xóa vĩnh viễn</a>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Bạn chưa xóa movie nào. 
+          <a href="/me/stored/movies">Danh sách movie</a>
+        </td>
+      </tr>
+      {{/each }}
+    </tbody>
+  </table>
+</div>
+
+{{! comfirm delete movie }}
+<div id="delete-movie-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa Phim</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn muốn xóa trường này sao!?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-movie" type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-movie-form" method="POST"></form>
+<form name="restore-movie-form" method="POST"></form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    var movieId;
+    var deleteForm = document.forms['delete-movie-form'];
+    var restoreForm = document.forms['restore-movie-form'];
+    var btnDeleteMovie = document.getElementById('btn-delete-movie');
+    var restoreBtn = $('.btn-restore');
+    
+   
+    // Khi dialog confirm click
+    $('#delete-movie-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      movieId = button.data('id');
+    });
+
+    btnDeleteMovie.onclick = function () {
+      deleteForm.action = '/movies/delete-forever/' + movieId  + '?_method=DELETE';
+      deleteForm.submit();
+    }
+
+    restoreBtn.click(function (e) {
+      e.preventDefault();
+
+      var movieId = $(this).data('id');
+      restoreForm.action = '/movies/' + movieId  + '/restore?_method=PATCH';
+      restoreForm.submit();
+    })
+  });
+</script>

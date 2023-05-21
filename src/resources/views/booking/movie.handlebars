@@ -1,0 +1,219 @@
+<div class="row">
+    <div class="col-12 details-booking mt-4">
+        <h2 class="name-booking">{{this.nameCinema}}</h2>
+        <a href="/booking/cinemas" class="btn btn-light">Back</a>
+        <hr>
+
+    </div>
+    <hr>
+    <div class="h4 col-12 text-primary">Choose Showtime</div>
+    <div class=" col choose-showtime">
+        <hr>
+        {{#each movieShowtimes}}
+        {{#if this.showtimes.length }}
+        <div class="">
+            <h2>{{this.movie}}</h2>
+            {{#each this.showtimes}}
+            <p class="btn btn-showtime">{{this.time}}</p>
+            {{/each}}
+            <hr>
+        </div>
+        {{else}}
+        
+        {{/if}}
+        {{/each}}
+
+    </div>
+    <div class="choose-ciname">
+        <div class="calendar-container col">
+            <div class="calendar-header">
+                <div class="month-year">
+                    <span class="month"></span>
+                    <span class="year"></span>
+                </div>
+                <div class="nav-buttons">
+                    <button id="currentMonth" onclick="reloadCalendar()" class="btn btn-light mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                            <path
+                                d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+                        </svg>
+                    </button>
+                    <button id="prevMonth" class="btn btn-light">&#8249;</button>
+                    <button id="nextMonth" class="btn btn-light">&#8250;</button>
+                </div>
+            </div>
+            <div class="calendar-body">
+                <div class="weekdays d-none d-sm-flex">
+                    <div class="col p-2 text-danger">Sun</div>
+                    <div class="col p-2 ">Mon</div>
+                    <div class="col p-2">Tue</div>
+                    <div class="col p-2">Wed</div>
+                    <div class="col p-2">Thu</div>
+                    <div class="col p-2">Fri</div>
+                    <div class="col p-2  text-primary">Sat</div>
+                </div>
+                <div class="days"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // lấy các element cần thiết
+    const monthYear = document.querySelector(".month-year");
+    const month = document.querySelector(".month");
+    const year = document.querySelector(".year");
+    const btnShowTimes = document.querySelectorAll('.btn-showtime');
+    const prevMonth = document.querySelector("#prevMonth");
+    const nextMonth = document.querySelector("#nextMonth");
+    const days = document.querySelector(".days");
+
+    // khai báo các biến
+
+    const currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    var selectedDate = currentDate;
+
+    // tạo calendar ban đầu
+
+    createCalendar(currentMonth, currentYear);
+
+    // thêm sự kiện cho các nút
+    function reloadCalendar() {
+        currentMonth = currentDate.getMonth();
+        currentYear = currentDate.getFullYear();
+        createCalendar(currentMonth, currentYear);
+    }
+
+    prevMonth.addEventListener("click", () => {
+        currentMonth -= 1;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear -= 1;
+        }
+        createCalendar(currentMonth, currentYear);
+    });
+
+    nextMonth.addEventListener("click", () => {
+        currentMonth += 1;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear += 1;
+        }
+        createCalendar(currentMonth, currentYear);
+    });
+
+    // hàm tạo lịch mới
+
+    function createCalendar(month, year) {
+        // xóa ngày cũ
+        days.innerHTML = "";
+
+        // cập nhật thông tin tháng và năm
+        const monthText = monthToString(month);
+        monthYear.textContent = `${monthText} ${year}`;
+        month.textContent = monthText;
+        year.textContent = year;
+
+        // tạo ngày mới
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastDayOfMonth.getDate();
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const date = new Date(year, month, i);
+            const dayOfWeek = date.getDay();
+            const dayElement = document.createElement("div");
+            const dayEmpty = document.createElement("div");
+            dayElement.textContent = i;
+            dayElement.classList.add("p-2", "h-100", "d-flex", "align-items-center", "justify-content-center", "day");
+            dayEmpty.classList.add("p-2", "h-100", "d-flex", "align-items-center", "justify-content-center");
+
+            if ('{{this.selectedDate}}' == date.toLocaleDateString()) {
+                dayElement.classList.add("selected-day");
+            }
+
+            if (date.toDateString() === currentDate.toDateString()) {
+                dayElement.classList.add("current-day");
+            }
+
+            if (dayOfWeek === 0) {
+                dayElement.classList.add("text-danger");
+            } else if (dayOfWeek === 6) {
+                dayElement.classList.add("text-primary");
+            }
+
+            // Thêm sự kiện click cho mỗi ngày
+            dayElement.addEventListener("click", () => {
+                selectedDate = new Date(year, month, dayElement.textContent);
+                console.log(selectedDate.toLocaleDateString());
+
+                /*const previousSelectedElement = document.querySelector(".selected-day");
+                if (previousSelectedElement) {
+                    previousSelectedElement.classList.remove("selected-day");
+                }
+
+                dayElement.classList.add("selected-day");*/
+
+                // Thêm hàm để gửi yêu cầu get với ngày được chọn
+                var currentParams = new URLSearchParams(window.location.search);
+                currentParams.set('date', selectedDate.toLocaleDateString());
+                window.location.href = '/booking/choose-movie?' + currentParams.toString();
+
+
+            });
+
+            if (i == 1) {
+                for (let j = 1; j <= dayOfWeek; j++) {
+                    days.appendChild(dayEmpty.cloneNode());
+                }
+            }
+            days.appendChild(dayElement);
+        }
+    }
+
+    // chuyển đổi tháng từ số sang chữ
+
+    function monthToString(month) {
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+        return months[month];
+    }
+
+
+    // khi click chọn btn suất chiếu 
+
+    btnShowTimes.forEach((btnShowTime) => btnShowTime.addEventListener("click", () => {
+
+        // lấy dữ liệu
+        var timeBooking = btnShowTime.innerHTML;
+        var dateBooking = selectedDate.toLocaleDateString();
+        var cinemaBooking = "{{this.nameCinema}}";
+        var nameBooking = btnShowTime.parentElement.firstElementChild.innerHTML;
+        console.log(nameBooking)
+
+        function redirectToBooking() {
+            window.location.href = "/booking/choose-a-chair?cinema=" + cinemaBooking + "&date=" + dateBooking + "&time=" + timeBooking + "&nameAnime=" + nameBooking;
+        }
+        redirectToBooking();
+    }))
+
+</script>

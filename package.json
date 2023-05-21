@@ -1,0 +1,46 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write 'src/**/*.{js,json,scss}",
+    "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass --watch src/resources/scss/app.scss --output src/public/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phan-Van-Tuan/nodejs_test.git"
+  },
+  "keywords": [
+    "test",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Phan-Van-Tuan/nodejs_test/issues"
+  },
+  "homepage": "https://github.com/Phan-Van-Tuan/nodejs_test#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.10.0",
+    "mongoose-delete": "^0.5.4",
+    "mongoose-slug-generator": "^1.0.4",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.21"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "morgan": "^1.10.0",
+    "node-sass": "^8.0.0",
+    "prettier": "^2.8.4"
+  }
+}

@@ -1,0 +1,114 @@
+{{!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+
+    <!-- Just an image -->
+    <a class="navbar-brand" href="/">
+      <img class="navbar-logo" src="/img/LOGO.png" width="30" height="30" alt="">
+    </a>
+    <a class="navbar-brand" href="/">Anime Cinema</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img class="avatar" src="/img/avatar.jpg">
+            Phan Tuấn
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/movies/create">Thêm Movie</a>
+            <a class="dropdown-item" href="/me/stored/movies">Phim của tôi</a>
+            <a class="dropdown-item" href="/showtime/create">Thêm Suất Chiếu</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="">Profile</a>
+            <a class="dropdown-item" href="/me/stored/news">Thông báo</a>
+            <a class="dropdown-item" href="/me/stored/ticket">Vé của tôi</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/booking/cinemas">Chọn vé theo rạp</a>
+            <a class="dropdown-item" href="/">Chọn vé theo Phim</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Đăng Xuất</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav> --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img class="navbar-logo" src="/img/LOGO.png" width="30" height="30" alt="">
+    </a>
+    <a class="navbar-brand" href="/">Anime Cinema</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<div id="sidenav-overlay">
+  <div class="sidenav">
+    <a class="sidenav-close" href="#"><i class="fas fa-times"></i></a>
+    <ul>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img class="avatar" src="/img/avatar.jpg">
+          Phan Tuấn
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/movies/create">Thêm Movie</a>
+          <a class="dropdown-item" href="/me/stored/movies">Phim của tôi</a>
+          <a class="dropdown-item" href="/showtime/create">Thêm Suất Chiếu</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">Profile</a>
+          <a class="dropdown-item" href="/me/stored/news">Thông báo</a>
+          <a class="dropdown-item" href="/me/stored/ticket">Vé của tôi</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/booking/cinemas">Chọn vé theo rạp</a>
+          <a class="dropdown-item" href="/">Chọn vé theo Phim</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Đăng Xuất</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var sidenavOverlay = document.getElementById('sidenav-overlay');
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var sidenavClose = document.querySelector('.sidenav-close');
+
+    navbarToggler.addEventListener('click', function (e) {
+      e.preventDefault();
+      sidenavOverlay.style.display = 'block';
+      setTimeout(function () {
+        document.querySelector('.sidenav').style.left = '0';
+      }, 100);
+    });
+
+    sidenavClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('.sidenav').style.left = '-300px';
+      setTimeout(function () {
+        sidenavOverlay.style.display = 'none';
+      }, 300);
+    });
+
+    sidenavOverlay.addEventListener('click', function (e) {
+      if (e.target === sidenavOverlay) {
+        document.querySelector('.sidenav').style.left = '-300px';
+        setTimeout(function () {
+          sidenavOverlay.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
+
+</script>

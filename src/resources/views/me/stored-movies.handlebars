@@ -1,0 +1,136 @@
+<form class="mt-4" name="container-form" method="POST" action="/movies/handle-form-actions">
+  <div class="">
+    <h1>Phim của Tôi</h1>
+    <a href="/me/trash/movies">Thùng rác ({{deleteCount}})</a>
+
+    <div class="mt-4 d-flex align-items-center">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="check-box-all">
+        <label class="form-check-label" for="check-box-all">
+          Chọn tất cả
+        </label>
+      </div>
+
+      <select class="form-control form-control-sm checkbox-selection-all-option ml-auto" name="action" required>
+        <option value="">-- Hành Động --</option>
+        <option value="delete"> Xóa </option>
+      </select>
+
+      <button class="btn btn-primary btn-sm ml-2 check-all-submit-btn" disabled>Thực Hiện</button>
+    </div>
+  </div>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Thể loại</th>
+        <th scope="col" colspan="2">Thời gian tạo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each movies}}
+      <tr>
+        <td>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="movieIds[]" value="{{this._id}}" id="">
+          </div>
+        </td>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.videoId}}</td>
+        <td>{{moment this.createdAt format='MM/DD/YYYY hh:mm:ss a'}}</td>
+        <td>
+          <a href="/movies/{{this._id}}/edit" class="btn btn-outline-warning">Sửa</a>
+          <a href="" class="btn btn-outline-danger" data-id="{{this._id}}" data-toggle="modal"
+            data-target="#delete-movie-modal">Xóa</a>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">
+          Bạn chưa đăng Movie nào.
+          <a href="/movies/create">Đăng Movie</a>
+        </td>
+      </tr>
+      {{/each }}
+    </tbody>
+  </table>
+</form>
+
+{{! comfirm delete movie }}
+<div id="delete-movie-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa Phim</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn muốn xóa trường này sao!?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-movie" type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- Delete hidden form--}}
+
+<form name="delete-movie-form" method="POST"></form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    var movieId;
+    var deleteForm = document.forms['delete-movie-form'];
+    // var containerForm = document.forms['container-form'];
+    var containerForm = $('form[name="container-form"]');
+    var btnDeleteMovie = document.getElementById('btn-delete-movie');
+    var checkBoxAll = $('#check-box-all');
+    var movieItemCheckbox = $('input[name="movieIds[]"]');
+    var checkAllSubmitBtn = $('.check-all-submit-btn');
+
+    console.log(containerForm);   
+    // Khi dialog confirm click
+    $('#delete-movie-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      movieId = button.data('id');
+    });
+
+    btnDeleteMovie.onclick = function () {
+      deleteForm.action = '/movies/' + movieId + '?_method=DELETE';
+      deleteForm.submit();
+    }
+
+    // check box onclick
+
+    checkBoxAll.change(function () {
+      var isCheckAll = $(this).prop('checked');
+      movieItemCheckbox.prop('checked', isCheckAll);
+      renderCheckAllSubmitBtn();
+    });
+
+    // movie item checkbox changed
+    movieItemCheckbox.change(function () {
+      var isCheckAll = movieItemCheckbox.length === $('input[name="movieIds[]"]:checked').length;
+      checkBoxAll.prop('checked', isCheckAll);
+      renderCheckAllSubmitBtn();
+    })
+
+    // Re-render check all submit button
+    function renderCheckAllSubmitBtn() {
+      var checkedCount = $('input[name="movieIds[]"]:checked').length;
+      if (checkedCount > 0) {
+        checkAllSubmitBtn.removeAttr('disabled');
+      } else {
+        checkAllSubmitBtn.attr('disabled', true);
+      }
+    }
+
+  });
+</script>

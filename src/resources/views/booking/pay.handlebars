@@ -1,0 +1,149 @@
+<div class='credit container mt-4'>
+  <div class='window row'>
+
+    {{!-- info --}}
+    <div class='order-info-content col mt-4'>
+      <h2>Order Summary</h2>
+      <hr>
+      <div class="product-details">
+        <div class="product-bill d-flex flex-column">
+          <div class="product-content">
+            <h4>{{this.name}}</h4>
+            <span><b>date:</b> {{this.date}}</span> <br>
+            <span><b>time:</b> {{this.time}}</span> <br>
+            <span><b>cinema:</b> {{this.cinema}}</span> <br>
+            <span><b>note:</b> p: danh cho moi lua tuoi</span>
+          </div>
+          <hr>
+          <div class='total mt-auto'>
+            <span style='float:left;'>
+              <div class='thin dense'>VAT 10%</div>
+              <div class='thin dense'>Delivery</div>
+              TOTAL
+            </span>
+            <span style='float:right; text-align:right;'>
+              <div class='thin dense'>$68.75</div>
+              <div class='thin dense'>$4.95</div>
+              $435.55
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- credit --}}
+    <div class='credit-info mt-4 p-4 col'>
+      <div class='credit-info-content text-light'>
+        <table class='half-input-table' style="width: 100%;">
+          <tr>
+            <td>Please select your card: </td>
+            <td>
+              <select class="ml-auto credit-select text-light" id="inputGroupSelectCredit">
+                <option value="visa" selected>Visa</option>
+                <option value="master-card">Master Card</option>
+                <option value="american-express">American Express</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <div class="credit-img mt-4 d-flex justify-content-center">
+          <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
+            class='credit-card-image' id='credit-card-image'></img>
+        </div>
+        <div class="credit-form">
+          <label for="card-number">Card Number</label>
+          <input class="card-number credit-input" id="card-number"></input>
+        </div>
+        <div class="mt-2">
+          <label for="card-holder">Card Holder</label>
+          <input class="card-holder credit-input" id="card-holder"></input>
+        </div>
+        <table class='half-input-table mt-2'>
+          <tr>
+            <td>
+              <div class="">
+                <label for="card-expires">Expires</label>
+                <input class="credit-input" id="card-expires"></input>
+              </div>
+            </td>
+            <td>
+              <div class="ml-4">
+                <label for="card-cvc">CVC</label>
+                <input class="credit-input" id="card-cvc"></input>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <button class='pay-credit-btn mt-4'>Checkout</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const methodPay = $('#inputGroupSelectCredit');
+
+    methodPay.on('change', function () {
+      switch ($('#inputGroupSelectCredit :selected').text()) {
+        case 'Master Card': document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/2vbqk5lcpi7hjoc/MasterCard_Logo.svg.png'; break;
+        case 'American Express': document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/f5hyn6u05ktql8d/amex-icon-6902.png'; break;
+        case 'Visa': document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png'; break;
+        default : break;
+      }
+    })
+
+  });
+</script>
+
+{{!--
+<script>
+  var cardDrop = document.getElementById('card-dropdown');
+  var activeDropdown;
+  cardDrop.addEventListener('click', function () {
+    var node;
+    for (var i = 0; i < this.childNodes.length - 1; i++)
+      node = this.childNodes[i];
+    if (node.className === 'dropdown-select') {
+      node.classList.add('visible');
+      activeDropdown = node;
+    };
+  })
+
+  window.onclick = function (e) {
+    console.log(e.target.tagName)
+    console.log('dropdown');
+    console.log(activeDropdown)
+    if (e.target.tagName === 'LI' && activeDropdown) {
+      if (e.target.innerHTML === 'Master Card') {
+        document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/2vbqk5lcpi7hjoc/MasterCard_Logo.svg.png';
+        activeDropdown.classList.remove('visible');
+        activeDropdown = null;
+        e.target.innerHTML = document.getElementById('current-card').innerHTML;
+        document.getElementById('current-card').innerHTML = 'Master Card';
+      }
+      else if (e.target.innerHTML === 'American Express') {
+        document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/f5hyn6u05ktql8d/amex-icon-6902.png';
+        activeDropdown.classList.remove('visible');
+        activeDropdown = null;
+        e.target.innerHTML = document.getElementById('current-card').innerHTML;
+        document.getElementById('current-card').innerHTML = 'American Express';
+      }
+      else if (e.target.innerHTML === 'Visa') {
+        document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png';
+        activeDropdown.classList.remove('visible');
+        activeDropdown = null;
+        e.target.innerHTML = document.getElementById('current-card').innerHTML;
+        document.getElementById('current-card').innerHTML = 'Visa';
+      }
+    }
+    else if (e.target.className !== 'dropdown-btn' && activeDropdown) {
+      activeDropdown.classList.remove('visible');
+      activeDropdown = null;
+    }
+  }
+
+</script> --}}

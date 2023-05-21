@@ -1,0 +1,90 @@
+<div id="success-alert" class="alert alert-success" role="alert" style="display:none">
+    This is a success alert—check it out!
+</div>
+<div class="container mt-5">
+    <h1 class="text-center">Showtimes của hãng rạp chiếu phim Anime Cinema</h1>
+    <form class="mt-4" id="showtimeForm">
+        <div class="form-group">
+            <label for="idAnime">Tên Anime:</label>
+            <select class="form-control" name="idAnime" required>
+                <option>-- Vui Lòng Chọn Phim --</option>
+                {{#each animes}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="idCinema">Rạp chiếu:</label>
+            <select class="form-control" name="idCinema" required>
+                <option>-- Vui Lòng Chọn Rạp --</option>
+                {{#each cinemas}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="date">Ngày:</label>
+            <input type="date" class="form-control" name="date" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="time">Thời gian:</label>
+            <input type="time" class="form-control" name="time" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="price">Giá vé ($):</label>
+            <input type="number" class="form-control" name="price" min="0" required>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary mt-4">Submit</button>
+        <input type="reset" value="reset" id="btn-reset" class="reset btn btn-primary ml-3 mt-4">
+    </form>
+</div>
+<script>
+    const alert = document.querySelector('.alert');
+    function showAlert() {
+        if (document.querySelector('.alert.show')) {
+            alert.setAttribute('style', 'display:block;');
+        } else {
+            alert.setAttribute('style', 'display:none;');
+        }
+    }
+
+
+    const form = document.getElementById('showtimeForm');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log('bạn vừa nhấn submit');
+
+        const formData = new FormData(form);
+
+        // Gửi yêu cầu tạo mới showtime
+        fetch('/showtime/create/stored', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Lấy đối tượng alert và thêm class "show" để hiện thị
+                    // Hiện thị đoạn alert
+                    alert.classList.add('show');
+                    showAlert();
+
+                    // Gỡ bỏ class "show" sau 3s
+                    setTimeout(() => {
+                        alert.classList.remove('show');
+                        showAlert()
+                        form.reset();
+                    }, 3000);
+                    
+
+                    // Reset form
+                    //form.reset();
+                } else {
+                    console.log(data.error);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>

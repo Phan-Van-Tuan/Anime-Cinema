@@ -1,0 +1,13 @@
+<div class="col mt-4">
+    {{#each showtimes}}
+    <h2>{{this.time}}</h2>
+    <span>{{this.date}}</span>
+    <br>
+    <h1>{{this.idAnime.name}}</h1>
+    <span>Thịnh hay lè nhè</span>
+    <h1 class="text-danger">em toàn lỳ</h1>
+    {{/each}}
+</div>
+<script>
+    console.log('{{showtimes}}')
+</script>

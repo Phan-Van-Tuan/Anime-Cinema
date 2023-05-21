@@ -1,0 +1,263 @@
+{{!-- <div class="row"> 
+    <div class="col-12 details-booking">
+        <hr>
+        <h2>{{this.nameAnime}}</h2>
+        <b>Time: </b> {{this.time}} <br>
+        <b>Date: </b> {{this.date}} <br>
+        <b>Ciname:</b> {{this.cinema}} <br>
+        <a href="#" onclick="javascript:history.back();" class="btn btn-light">Back</a>
+        <hr>
+
+
+    </div>
+
+    <div class="col book-chair">
+        <div class="col-12 mt-2">
+            <div class="col-12">
+                <big class="d-flex justify-content-center"><b>Screen</b></big>
+                <hr class="hr-screen" color="red" style="height: 4px; width: 400px;">
+            </div>
+            <div class=" sitting-area d-flex justify-content-center mt-5">
+                <table cellpadding="5">
+                    <tr>
+                        <td colspan="3" class="pr-5"><b>A</b></td>
+                        <td><button id="A1" class="chair">1</button></td>
+                        <td><button id="A2" class="chair">2</button></td>
+                        <td><button id="A3" class="chair">3</button></td>
+                        <td><button id="A4" class="chair">4</button></td>
+                        <td><button id="A5" class="chair">5</button></td>
+                        <td><button id="A6" class="chair">6</button></td>
+                        <td><button id="A7" class="chair">7</button></td>
+                        <td><button id="A8" class="chair">8</button></td>
+                        <td><button id="A9" class="chair">9</button></td>
+                        <td><button id="A10" class="chair">10</button></td>
+                        <td colspan="3" class="pr-5"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>B</b></td>
+                        <td><button id="B1" class="chair">1</button></td>
+                        <td><button id="B2" class="chair">2</button></td>
+                        <td><button id="B3" class="chair">3</button></td>
+                        <td><button id="B4" class="chair">4</button></td>
+                        <td><button id="B5" class="chair">5</button></td>
+                        <td><button id="B6" class="chair">6</button></td>
+                        <td><button id="B7" class="chair">7</button></td>
+                        <td><button id="B8" class="chair">8</button></td>
+                        <td><button id="B9" class="chair">9</button></td>
+                        <td><button id="B10" class="chair">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>C</b></td>
+                        <td><button id="C1" class="chair">1</button></td>
+                        <td><button id="C2" class="chair">2</button></td>
+                        <td><button id="C3" class="chair">3</button></td>
+                        <td><button id="C4" class="chair">4</button></td>
+                        <td><button id="C5" class="chair">5</button></td>
+                        <td><button id="C6" class="chair">6</button></td>
+                        <td><button id="C7" class="chair">7</button></td>
+                        <td><button id="C8" class="chair">8</button></td>
+                        <td><button id="C9" class="chair">9</button></td>
+                        <td><button id="C10" class="chair">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>D</b></td>
+                        <td><button id="D1" class="chair chair-vip">1</button></td>
+                        <td><button id="D2" class="chair chair-vip">2</button></td>
+                        <td><button id="D3" class="chair chair-vip">3</button></td>
+                        <td><button id="D4" class="chair chair-vip">4</button></td>
+                        <td><button id="D5" class="chair chair-vip">5</button></td>
+                        <td><button id="D6" class="chair chair-vip">6</button></td>
+                        <td><button id="D7" class="chair chair-vip">7</button></td>
+                        <td><button id="D8" class="chair chair-vip">8</button></td>
+                        <td><button id="D9" class="chair chair-vip">9</button></td>
+                        <td><button id="D10" class="chair chair-vip">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>E</b></td>
+                        <td><button id="E1" class="chair chair-vip">1</button></td>
+                        <td><button id="E2" class="chair chair-vip">2</button></td>
+                        <td><button id="E3" class="chair chair-vip">3</button></td>
+                        <td><button id="E4" class="chair chair-vip">4</button></td>
+                        <td><button id="E5" class="chair chair-vip">5</button></td>
+                        <td><button id="E6" class="chair chair-vip">6</button></td>
+                        <td><button id="E7" class="chair chair-vip">7</button></td>
+                        <td><button id="E8" class="chair chair-vip">8</button></td>
+                        <td><button id="E9" class="chair chair-vip">9</button></td>
+                        <td><button id="E10" class="chair chair-vip">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>F</b></td>
+                        <td><button id="F1" class="chair chair-vip">1</button></td>
+                        <td><button id="F2" class="chair chair-vip">2</button></td>
+                        <td><button id="F3" class="chair chair-vip">3</button></td>
+                        <td><button id="F4" class="chair chair-vip">4</button></td>
+                        <td><button id="F5" class="chair chair-vip">5</button></td>
+                        <td><button id="F6" class="chair chair-vip">6</button></td>
+                        <td><button id="F7" class="chair chair-vip">7</button></td>
+                        <td><button id="F8" class="chair chair-vip">8</button></td>
+                        <td><button id="F9" class="chair chair-vip">9</button></td>
+                        <td><button id="F10" class="chair chair-vip">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>G</b></td>
+                        <td><button id="G1" class="chair chair-vip">1</button></td>
+                        <td><button id="G2" class="chair chair-vip">2</button></td>
+                        <td><button id="G3" class="chair chair-vip">3</button></td>
+                        <td><button id="G4" class="chair chair-vip">4</button></td>
+                        <td><button id="G5" class="chair chair-vip">5</button></td>
+                        <td><button id="G6" class="chair chair-vip">6</button></td>
+                        <td><button id="G7" class="chair chair-vip">7</button></td>
+                        <td><button id="G8" class="chair chair-vip">8</button></td>
+                        <td><button id="G9" class="chair chair-vip">9</button></td>
+                        <td><button id="G10" class="chair chair-vip">10</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>H</b></td>
+                        <td><button id="H1" class="chair chair-vip">1</button></td>
+                        <td><button id="H2" class="chair chair-vip">2</button></td>
+                        <td><button id="H3" class="chair chair-vip">3</button></td>
+                        <td><button id="H4" class="chair chair-vip">4</button></td>
+                        <td><button id="H5" class="chair chair-vip">5</button></td>
+                        <td><button id="H6" class="chair chair-vip">6</button></td>
+                        <td><button id="H7" class="chair chair-vip">7</button></td>
+                        <td><button id="H8" class="chair chair-vip">8</button></td>
+                        <td><button id="H9" class="chair chair-vip">9</button></td>
+                        <td><button id="H10" class="chair chair-vip">10</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mt-5 d-flex justify-content-center">
+                <button class="btn btn-danger btn-book-chair">Book now</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+            <h3>Guide</h3>
+
+            <button class="mr-2 chair" disabled></button><span> regular chair</span><br>
+            <button class="mr-2 chair chair-vip" disabled></button><span> vip chair</span><br>
+            <button class="mr-2 chair active-disabled" disabled></button><span> selected chair</span><br>
+            <button class="mr-2 chair bought" disabled></button><span> chair has been purchased</span><br>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<form id="form-product-detail-pay" style="display: none;" action="/booking/pay" method="GET">
+    <input type="text" id="name" name="name" value="{{this.nameAnime}}"><br>
+    <input type="text" id="date" name="date" value="{{this.date}}"><br>
+    <input type="text" id="time" name="time" value="{{this.time}}"><br>
+    <input type="text" id="cinema" name="cinema" value="{{this.cinema}}"><br>
+    <input type="text" id="chairs" name="chairs" required><br>
+</form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var chair = $('.chair');
+        var bought = $('.bought');
+        const btnBookChair = $('.btn-book-chair');
+        const formProductDetailPay = $('#form-product-detail-pay');
+        var chairsForm = $('#chairs');
+
+        // hàm lấy số ghế
+        function test() {
+            var retval = [];
+            $('.chair.active').each(function () {
+                retval.push($(this).attr('id'));
+            });
+            return retval;
+        }
+
+        chair.click(function (e) {
+            e.target.classList.toggle('active');
+            var chairs = test().join();
+            chairsForm.val(chairs);
+        });
+
+        // khi click vào nút booking
+        btnBookChair.on('click', function() {
+            formProductDetailPay.submit();
+        });
+
+    });
+    
+    
+
+
+</script>--}}
+
+<div class="row">
+    <div class="col-12 details-booking">
+        <hr>
+        <h2>{{this.nameAnime}}</h2>
+        <b>Time: </b> {{this.time}} <br>
+        <b>Date: </b> {{this.date}} <br>
+        <b>Cinema:</b> {{this.cinema}} <br>
+        <a href="#" onclick="javascript:history.back();" class="btn btn-light">Back</a>
+        <hr>
+    </div>
+
+    <div class="col book-chair">
+        <div class="col-12 mt-2">
+            <div class="col-12">
+                <big class="d-flex justify-content-center"><b>Screen</b></big>
+                <hr class="hr-screen" color="red" style="height: 4px; width: 400px;">
+            </div>
+            <div class="sitting-area d-flex justify-content-center mt-5">
+                <table cellpadding="5">
+                    {{#each rows}}
+                    <tr>
+                        <td colspan="3"><b>{{this.rowName}}</b></td>
+                        {{#each this.seats}}
+                        <td>
+                            <button id="{{this.id}}" class="chair" {{#if this.isDisabled}}disabled{{/if}}>{{this.seatNumber}}</button>
+                        </td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div class="mt-5 d-flex justify-content-center">
+                <button class="btn btn-danger btn-book-chair">Book now</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+            <h3>Guide</h3>
+            <button class="mr-2 chair" disabled></button><span> regular chair</span><br>
+            <button class="mr-2 chair chair-vip" disabled></button><span> vip chair</span><br>
+            <button class="mr-2 chair active-disabled" disabled></button><span> selected chair</span><br>
+            <button class="mr-2 chair bought" disabled></button><span> chair has been purchased</span><br>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<form id="form-product-detail-pay" style="display: none;" action="/booking/pay" method="GET">
+    <input type="text" id="name" name="name" value="{{this.nameAnime}}"><br>
+    <input type="text" id="date" name="date" value="{{this.date}}"><br>
+    <input type="text" id="time" name="time" value="{{this.time}}"><br>
+    <input type="text" id="cinema" name="cinema" value="{{this.cinema}}"><br>
+    <input type="text" id="chairs" name="chairs" required><br>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var chair = $('.chair');
+        var btnBookChair = $('.btn-book-chair');
+        var chairsForm = $('#chairs');
+
+        chair.click(function (e) {
+            e.target.classList.toggle('active');
+            var chairs = $('.chair.active').map(function() {
+                return this.id;
+            }).get().join();
+            chairsForm.val(chairs);
+        });
+
+        btnBookChair.on('click', function() {
+            $('#form-product-detail-pay').submit();
+        });
+    });
+</script>

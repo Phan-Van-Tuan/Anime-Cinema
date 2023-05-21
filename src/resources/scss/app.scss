@@ -1,0 +1,778 @@
+@import 'variables';
+@import 'libarary.scss';
+@import 'header.scss';
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-family: Arial, sans-serif;
+}
+
+.app {
+    height: 100vh;
+}
+
+.card-movie-description {
+    height: 2.8rem;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox-selection-all-option {
+    width: 140px;
+}
+
+.navbar-logo {
+    border-radius: 4px;
+}
+
+.nav-pills .nav-link,
+.nav-pills .show>.nav-link {
+    font-weight: 600;
+    opacity: 0.4;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #0868f6;
+    opacity: 1;
+    background-color: #fff;
+}
+
+.hr {
+    margin: 0;
+}
+
+.bi {
+    color: #0167c1;
+}
+
+footer {
+    box-shadow: 0 0px 10px 2px rgb(87, 87, 87);
+}
+
+.content-main {
+    min-height: var(--vh-content);
+}
+
+body {
+    height: 100vh;
+    background-color: #fdfcf0;
+    // background: rgba(0, 0, 0, 0.1);
+    // background-image: url('/img/logo-simple.png');
+
+}
+
+
+//   css stars
+
+.starfall {
+    position: relative;
+    width: 120%;
+    height: 120%;
+    transform: rotateZ(45deg) translate(10%, 4%) scale(1.2);
+}
+
+.starfall .star {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+    filter: drop-shadow(0 0 6px #699bff);
+    -webkit-animation: tail 1000ms ease-in-out infinite, shooting 1000ms ease-in-out infinite;
+    animation: tail 1000ms ease-in-out infinite, shooting 1000ms ease-in-out infinite;
+}
+
+.starfall .star::before,
+.starfall .star::after {
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    height: 2px;
+    border-radius: 100%;
+    background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #5f91ff, rgba(0, 0, 255, 0));
+    content: '';
+    transform: translateX(50%) rotateZ(45deg);
+    -webkit-animation: shining 1000ms ease-in-out infinite;
+    animation: shining 1000ms ease-in-out infinite;
+}
+
+.starfall .star::after {
+    transform: translateX(50%) rotateZ(-45deg);
+}
+
+.starfall .star:nth-child(1) {
+    top: 32vw;
+    left: 45vh;
+    -webkit-animation-delay: 5297ms;
+    animation-delay: 5297ms;
+    -webkit-animation-duration: 1166ms;
+    animation-duration: 1166ms;
+}
+
+.starfall .star:nth-child(1)::before,
+.starfall .star:nth-child(1)::after {
+    -webkit-animation-delay: 5297ms;
+    animation-delay: 5297ms;
+}
+
+.starfall .star:nth-child(2) {
+    top: 53vw;
+    left: 97vh;
+    -webkit-animation-delay: 8047ms;
+    animation-delay: 8047ms;
+    -webkit-animation-duration: 773ms;
+    animation-duration: 773ms;
+}
+
+.starfall .star:nth-child(2)::before,
+.starfall .star:nth-child(2)::after {
+    -webkit-animation-delay: 8047ms;
+    animation-delay: 8047ms;
+}
+
+.starfall .star:nth-child(3) {
+    top: 24vw;
+    left: 33vh;
+    -webkit-animation-delay: 9830ms;
+    animation-delay: 9830ms;
+    -webkit-animation-duration: 557ms;
+    animation-duration: 557ms;
+}
+
+.starfall .star:nth-child(3)::before,
+.starfall .star:nth-child(3)::after {
+    -webkit-animation-delay: 9830ms;
+    animation-delay: 9830ms;
+}
+
+.starfall .star:nth-child(4) {
+    top: 55vw;
+    left: 21vh;
+    -webkit-animation-delay: 3985ms;
+    animation-delay: 3985ms;
+    -webkit-animation-duration: 598ms;
+    animation-duration: 598ms;
+}
+
+.starfall .star:nth-child(4)::before,
+.starfall .star:nth-child(4)::after {
+    -webkit-animation-delay: 3985ms;
+    animation-delay: 3985ms;
+}
+
+.starfall .star:nth-child(5) {
+    top: 24vw;
+    left: 17vh;
+    -webkit-animation-delay: 3827ms;
+    animation-delay: 3827ms;
+    -webkit-animation-duration: 552ms;
+    animation-duration: 552ms;
+}
+
+.starfall .star:nth-child(5)::before,
+.starfall .star:nth-child(5)::after {
+    -webkit-animation-delay: 3827ms;
+    animation-delay: 3827ms;
+}
+
+.starfall .star:nth-child(6) {
+    top: 13vw;
+    left: 76vh;
+    -webkit-animation-delay: 3012ms;
+    animation-delay: 3012ms;
+    -webkit-animation-duration: 1465ms;
+    animation-duration: 1465ms;
+}
+
+.starfall .star:nth-child(6)::before,
+.starfall .star:nth-child(6)::after {
+    -webkit-animation-delay: 3012ms;
+    animation-delay: 3012ms;
+}
+
+.starfall .star:nth-child(7) {
+    top: 56vw;
+    left: 26vh;
+    -webkit-animation-delay: 6901ms;
+    animation-delay: 6901ms;
+    -webkit-animation-duration: 944ms;
+    animation-duration: 944ms;
+}
+
+.starfall .star:nth-child(7)::before,
+.starfall .star:nth-child(7)::after {
+    -webkit-animation-delay: 6901ms;
+    animation-delay: 6901ms;
+}
+
+.starfall .star:nth-child(8) {
+    top: 66vw;
+    left: 95vh;
+    -webkit-animation-delay: 3824ms;
+    animation-delay: 3824ms;
+    -webkit-animation-duration: 1350ms;
+    animation-duration: 1350ms;
+}
+
+.starfall .star:nth-child(8)::before,
+.starfall .star:nth-child(8)::after {
+    -webkit-animation-delay: 3824ms;
+    animation-delay: 3824ms;
+}
+
+.starfall .star:nth-child(9) {
+    top: 68vw;
+    left: 2vh;
+    -webkit-animation-delay: 1872ms;
+    animation-delay: 1872ms;
+    -webkit-animation-duration: 1143ms;
+    animation-duration: 1143ms;
+}
+
+.starfall .star:nth-child(9)::before,
+.starfall .star:nth-child(9)::after {
+    -webkit-animation-delay: 1872ms;
+    animation-delay: 1872ms;
+}
+
+.starfall .star:nth-child(10) {
+    top: 51vw;
+    left: 66vh;
+    -webkit-animation-delay: 6086ms;
+    animation-delay: 6086ms;
+    -webkit-animation-duration: 687ms;
+    animation-duration: 687ms;
+}
+
+.starfall .star:nth-child(10)::before,
+.starfall .star:nth-child(10)::after {
+    -webkit-animation-delay: 6086ms;
+    animation-delay: 6086ms;
+}
+
+.starfall .star:nth-child(11) {
+    top: 59vw;
+    left: 66vh;
+    -webkit-animation-delay: 6247ms;
+    animation-delay: 6247ms;
+    -webkit-animation-duration: 570ms;
+    animation-duration: 570ms;
+}
+
+.starfall .star:nth-child(11)::before,
+.starfall .star:nth-child(11)::after {
+    -webkit-animation-delay: 6247ms;
+    animation-delay: 6247ms;
+}
+
+.starfall .star:nth-child(12) {
+    top: 47vw;
+    left: 23vh;
+    -webkit-animation-delay: 5624ms;
+    animation-delay: 5624ms;
+    -webkit-animation-duration: 1011ms;
+    animation-duration: 1011ms;
+}
+
+.starfall .star:nth-child(12)::before,
+.starfall .star:nth-child(12)::after {
+    -webkit-animation-delay: 5624ms;
+    animation-delay: 5624ms;
+}
+
+.starfall .star:nth-child(13) {
+    top: 16vw;
+    left: 74vh;
+    -webkit-animation-delay: 8025ms;
+    animation-delay: 8025ms;
+    -webkit-animation-duration: 598ms;
+    animation-duration: 598ms;
+}
+
+.starfall .star:nth-child(13)::before,
+.starfall .star:nth-child(13)::after {
+    -webkit-animation-delay: 8025ms;
+    animation-delay: 8025ms;
+}
+
+.starfall .star:nth-child(14) {
+    top: 60vw;
+    left: 52vh;
+    -webkit-animation-delay: 8030ms;
+    animation-delay: 8030ms;
+    -webkit-animation-duration: 788ms;
+    animation-duration: 788ms;
+}
+
+.starfall .star:nth-child(14)::before,
+.starfall .star:nth-child(14)::after {
+    -webkit-animation-delay: 8030ms;
+    animation-delay: 8030ms;
+}
+
+.starfall .star:nth-child(15) {
+    top: 20vw;
+    left: 42vh;
+    -webkit-animation-delay: 9402ms;
+    animation-delay: 9402ms;
+    -webkit-animation-duration: 604ms;
+    animation-duration: 604ms;
+}
+
+.starfall .star:nth-child(15)::before,
+.starfall .star:nth-child(15)::after {
+    -webkit-animation-delay: 9402ms;
+    animation-delay: 9402ms;
+}
+
+.starfall .star:nth-child(16) {
+    top: 61vw;
+    left: 24vh;
+    -webkit-animation-delay: 9562ms;
+    animation-delay: 9562ms;
+    -webkit-animation-duration: 1089ms;
+    animation-duration: 1089ms;
+}
+
+.starfall .star:nth-child(16)::before,
+.starfall .star:nth-child(16)::after {
+    -webkit-animation-delay: 9562ms;
+    animation-delay: 9562ms;
+}
+
+.starfall .star:nth-child(17) {
+    top: 7vw;
+    left: 38vh;
+    -webkit-animation-delay: 850ms;
+    animation-delay: 850ms;
+    -webkit-animation-duration: 1183ms;
+    animation-duration: 1183ms;
+}
+
+.starfall .star:nth-child(17)::before,
+.starfall .star:nth-child(17)::after {
+    -webkit-animation-delay: 850ms;
+    animation-delay: 850ms;
+}
+
+.starfall .star:nth-child(18) {
+    top: 52vw;
+    left: 19vh;
+    -webkit-animation-delay: 4197ms;
+    animation-delay: 4197ms;
+    -webkit-animation-duration: 1135ms;
+    animation-duration: 1135ms;
+}
+
+.starfall .star:nth-child(18)::before,
+.starfall .star:nth-child(18)::after {
+    -webkit-animation-delay: 4197ms;
+    animation-delay: 4197ms;
+}
+
+.starfall .star:nth-child(19) {
+    top: 20vw;
+    left: 66vh;
+    -webkit-animation-delay: 7599ms;
+    animation-delay: 7599ms;
+    -webkit-animation-duration: 541ms;
+    animation-duration: 541ms;
+}
+
+.starfall .star:nth-child(19)::before,
+.starfall .star:nth-child(19)::after {
+    -webkit-animation-delay: 7599ms;
+    animation-delay: 7599ms;
+}
+
+.starfall .star:nth-child(20) {
+    top: 64vw;
+    left: 13vh;
+    -webkit-animation-delay: 5055ms;
+    animation-delay: 5055ms;
+    -webkit-animation-duration: 1332ms;
+    animation-duration: 1332ms;
+}
+
+.starfall .star:nth-child(20)::before,
+.starfall .star:nth-child(20)::after {
+    -webkit-animation-delay: 5055ms;
+    animation-delay: 5055ms;
+}
+
+@-webkit-keyframes tail {
+    0% {
+        width: 0;
+    }
+
+    30% {
+        width: 200px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes tail {
+    0% {
+        width: 0;
+    }
+
+    30% {
+        width: 200px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@-webkit-keyframes shining {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 30px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes shining {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 30px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@-webkit-keyframes shooting {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(300px);
+    }
+}
+
+@keyframes shooting {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(300px);
+    }
+}
+
+@-webkit-keyframes sky {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes sky {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+// css btn 
+.like-button {
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 12px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+    text-decoration: none;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "leadingIcon text trailingIcon";
+    padding: 5px 16px;
+    font-size: 14px;
+    color: rgb(45, 164, 78);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(27, 31, 36, 0.1) 0px 1px 0px;
+    margin-left: 30px;
+}
+
+.like-button:hover {
+    color: rgb(51, 59, 45);
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+.like-button.active {
+    color: rgb(255, 255, 255);
+    background-color: rgb(45, 164, 78);
+}
+
+.booking-btn {
+    line-height: 12px;
+}
+
+.btn-showtime {
+    margin: 0 4px;
+    border-radius: 10px;
+    background-color: #cccccca7;
+}
+
+// css card 
+.card {
+    border: none;
+    width: 12.5rem;
+    background-color: #fdfcf0;
+}
+
+.card-img-top {
+    border: 6px solid #000;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-text {
+    margin: -6px 0 0;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.82rem;
+}
+
+.badge-orange {
+    background-color: orange;
+}
+
+// label note
+.label-note {
+    padding: 8px;
+}
+
+// form short control 
+.form-short-control {
+    border: #ced4da;
+    padding: 4px 4px 4px 12px;
+    border-radius: 2px;
+
+}
+
+// chair
+.chair {
+    background-color: #ccc;
+    width: 30px;
+    height: 30px;
+    border: none;
+
+}
+
+.chair:focus {
+    outline: none;
+
+}
+
+.chair.active-disabled,
+.chair.active {
+    background-color: red;
+}
+
+.chair-vip {
+    background-color: rgba(165, 42, 120, 0.63);
+}
+
+.chair-disabilities {
+    background-color: rgba(42, 165, 71, 0.63);
+}
+
+.chair.bought {
+    background-color: #707070;
+}
+
+.hr-screen {
+    margin: 0 auto;
+}
+
+// calendar 
+
+.calendar-container {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.month-year {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-buttons {
+    display: flex;
+}
+
+button {
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+}
+
+.weekdays div {
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.days div {
+    display: flex;
+    justify-content: left;
+    width: 52.5px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.current-day {
+    background-color: #4caf4fa5;
+    color: #fff;
+}
+
+.selected-day {
+    background-color: rgba(255, 0, 0, 0.438);
+}
+
+
+// pay
+.credit {
+    
+}
+
+.order-info-content {
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+}
+
+.credit-info {
+    background-color: #48d;
+    box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.credit-input {
+    border: none;
+    padding: 10px 16px;
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
+    display: block;
+    width: 100%;
+    color: #fff;
+}
+
+.credit-select:focus-visible,
+.credit-input:focus-visible {
+    outline: none;
+    
+}
+
+.credit-select {
+    border: none;
+    border-radius: 6px;
+    padding: 0 4px 0 10px;
+    width: 100%;
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
+}
+
+.credit-select option {
+    background-color: #7ae;
+}
+
+.pay-credit-btn {
+    color: #fff;
+    background-color: #01c191;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.pay-credit-btn:hover {
+    background-color: #02d09d;
+}
+
+.half-input-table {
+    width: 100%;
+}
+
+// login
+
