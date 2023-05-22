@@ -37,13 +37,13 @@
     </div>
 </nav> --}}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+{{!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="/">
       <img class="navbar-logo" src="/img/LOGO.png" width="30" height="30" alt="">
     </a>
     <a class="navbar-brand" href="/">Anime Cinema</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler d-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -111,4 +111,109 @@
     });
   });
 
+</script> --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img class="navbar-logo" src="/img/LOGO.png" width="30" height="30" alt="">
+    </a>
+    <a class="navbar-brand" href="/">Anime Cinema</a>
+    <button class="navbar-toggler d-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<div id="sidenav-overlay">
+  <div class="sidenav">
+    <a class="sidenav-close" href="#"><i class="fas fa-times"></i></a>
+    <ul>
+      
+      {{#if currentUser}}
+      <li>
+        <a class="" href="#" role="button">
+          <img class="avatar" src="/img/avatar.jpg">
+          {{currentUser.fullname}}
+        </a>
+      </li>
+      <hr>
+      <li class="nav-item">
+        <a class="nav-link" href="/movies/create">Thêm Movie</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/me/stored/movies">Phim của tôi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/showtime/create">Thêm Suất Chiếu</a>
+      </li>
+      <hr>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Đăng Xuất</a>
+      </li>
+      <hr>
+      {{!-- <p>Quyền hạn của bạn: {{currentUser.role}}</p> --}}
+      {{else}}
+      <li>
+        <a class="" href="#" role="button">
+          <img class="avatar" src="/img/avatar.jpg">
+          Guest
+        </a>
+      </li>
+      <hr>
+      <li class="nav-item">
+        <a class="nav-link" href="/login/login-screen">Đăng Nhập</a>
+      </li>
+      <hr>
+      {{/if}}
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/me/stored/news">Thông báo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/me/stored/ticket">Vé của tôi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/booking/cinemas">Chọn vé theo rạp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Chọn vé theo Phim</a>
+      </li>
+      <hr>
+    </ul>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var sidenavOverlay = document.getElementById('sidenav-overlay');
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var sidenavClose = document.querySelector('.sidenav-close');
+
+    navbarToggler.addEventListener('click', function (e) {
+      e.preventDefault();
+      sidenavOverlay.style.display = 'block';
+      setTimeout(function () {
+        document.querySelector('.sidenav').style.left = '0';
+      }, 100);
+    });
+
+    sidenavClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('.sidenav').style.left = '-300px';
+      setTimeout(function () {
+        sidenavOverlay.style.display = 'none';
+      }, 300);
+    });
+
+    sidenavOverlay.addEventListener('click', function (e) {
+      if (e.target === sidenavOverlay) {
+        document.querySelector('.sidenav').style.left = '-300px';
+        setTimeout(function () {
+          sidenavOverlay.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
 </script>

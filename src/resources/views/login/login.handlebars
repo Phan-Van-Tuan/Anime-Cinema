@@ -1,0 +1,48 @@
+<!-- login.handlebars -->
+{{#if errorMessage}}
+  <div class="alert alert-danger" role="alert">
+    {{errorMessage}}
+  </div>
+{{/if}}
+
+<!-- Form đăng nhập -->
+<!-- ... -->
+
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="custom-card">
+      <div class="custom-card-header">
+        Đăng nhập<i class="fas fa-times"></i>
+      </div>
+
+      <div class="custom-card-body">
+        <form action="/login/login-check" method="POST" role="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email" name="username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+              name="password">
+          </div>
+          <button type="submit" class="btn custom-btn-primary text-light">Đăng nhập</button>
+        </form>
+
+        <div class="custom-text-muted">
+          Bạn chưa có tài khoản? <a href="/login/register-screen">Đăng ký</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Xử lý sự kiện ấn nút đóng trên header
+  $(".custom-card-header i").click(function () {
+    $(".custom-card").fadeOut(500);
+  });
+</script>

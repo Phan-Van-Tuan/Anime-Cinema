@@ -5,8 +5,18 @@ const moment = require('moment');
 const { engine } = require ('express-handlebars');
 const Handlebars = require('handlebars');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
+const checkAuthentication = (req, res, next) => {
+  if (req.session.user) {
+    // Người dùng đã đăng nhập, gán thông tin người dùng vào res.locals
+    res.locals.currentUser = req.session.user;
+  }
+  next();
+};
+
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -39,6 +49,19 @@ app.engine('handlebars',
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
+// dùng để báo lỗi
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(flash());
+
+// check đăng nhập
+app.use(checkAuthentication);
+
+// format date
 Handlebars.registerHelper('dateFormat', function(date, options) {
   if (!date) {
       return '';

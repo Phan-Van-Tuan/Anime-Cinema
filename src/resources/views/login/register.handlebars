@@ -1,0 +1,45 @@
+{{#if errorMessage}}
+  <div class="alert alert-danger" role="alert">
+    {{errorMessage}}
+  </div>
+{{/if}}
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="custom-card">
+      <div class="custom-card-header">
+        Đăng ký<i class="fas fa-times"></i>
+      </div>
+
+      <div class="custom-card-body">
+        <form action="/login/register-check" method="POST" role="form">
+          <div class="form-group">
+            <label for="fullname">Họ và tên</label>
+            <input type="text" class="form-control" id="fullname" placeholder="Nhập họ và tên" name="fullname">
+          </div>
+          <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="email" class="form-control" id="username" placeholder="là email của bạn đó" name="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password">
+          </div>
+          <button type="submit" class="btn custom-btn-primary text-light">Đăng ký</button>
+        </form>
+
+        <div class="custom-text-muted">
+          Đã có tài khoản? <a href="/login/login-screen">Đăng nhập</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Xử lý sự kiện ấn nút đóng trên header
+  $(".custom-card-header i").click(function () {
+    $(".custom-card").fadeOut(500);
+  });
+</script>
